@@ -1,4 +1,4 @@
-package com.rsproject.articlemanagementapi.article;
+package com.rsproject.articlemanagementapi.model;
 
 import jdk.jfr.Enabled;
 
@@ -15,6 +15,7 @@ public class Article implements Serializable {
     private String authors;
     private String abstrct;
     private String article;
+    private Boolean approved = false;
 
     public Article() {
     }
@@ -26,12 +27,13 @@ public class Article implements Serializable {
         this.article = article;
     }
 
-    public Article(Long id, String title, String authors, String abstrct, String article) {
+    public Article(Long id, String title, String authors, String abstrct, String article, Boolean approved) {
         this.id = id;
         this.title = title;
         this.authors = authors;
         this.abstrct = abstrct;
         this.article = article;
+        this.approved = approved;
     }
 
     public Long getId() {
@@ -74,6 +76,14 @@ public class Article implements Serializable {
         this.article = article;
     }
 
+    public Boolean getApproved() {
+        return approved;
+    }
+
+    public void setApproved(Boolean approved) {
+        this.approved = approved;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -82,6 +92,7 @@ public class Article implements Serializable {
                 ", authors='" + authors + '\'' +
                 ", abstrct='" + abstrct + '\'' +
                 ", article='" + article + '\'' +
+                ", approved=" + approved +
                 '}';
     }
 }
