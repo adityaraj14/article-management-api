@@ -1,9 +1,8 @@
 package com.rsproject.articlemanagementapi.model;
 
-import jdk.jfr.Enabled;
-
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Article implements Serializable {
@@ -12,7 +11,8 @@ public class Article implements Serializable {
     @Column(nullable = false, updatable = false)
     private Long id;
     private String title;
-    private String authors;
+    @ElementCollection(targetClass=String.class)
+    private List<String> authors;
     private String abstrct;
     private String article;
     private Boolean approved = false;
@@ -20,14 +20,14 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(String title, String authors, String abstrct, String article) {
+    public Article(String title, List<String> authors, String abstrct, String article) {
         this.title = title;
         this.authors = authors;
         this.abstrct = abstrct;
         this.article = article;
     }
 
-    public Article(Long id, String title, String authors, String abstrct, String article, Boolean approved) {
+    public Article(Long id, String title, List<String> authors, String abstrct, String article, Boolean approved) {
         this.id = id;
         this.title = title;
         this.authors = authors;
@@ -52,11 +52,11 @@ public class Article implements Serializable {
         this.title = title;
     }
 
-    public String getAuthors() {
+    public List<String> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(String authors) {
+    public void setAuthors(List<String> authors) {
         this.authors = authors;
     }
 
