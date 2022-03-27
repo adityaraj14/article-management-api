@@ -29,3 +29,40 @@ Build and run this back-end api
 In case you set the PostgreSQL password to something other than 'admin', try configuring DB username and pass inside article-management-api\src\main\resources\application.properties in the following fields -
 	spring.datasource.username
 	spring.datasource.password
+
+Once the app is up, the endpoints can be accessed @
+	GET - http://localhost:8080/api/articles
+		-> returns all articles
+	
+	POST - http://localhost:8080/api/add
+		-> Body: raw, data type: json
+		-> Example -
+			{
+				"id": 1,
+				"title": "article no. 13",
+				"authors": [
+					"author1",
+					"author3"
+				],
+				"abstrct": "this is an abstract abstract",
+				"article": "this is article no. 13",
+				"approved": false
+			}
+
+	PUT - http://localhost:8080/api/update
+		-> Body: raw, data type: json
+		-> Example -
+			{
+				"id": 1,
+				"title": "UPDATED - article no. 13",
+				"authors": [
+					"author1",
+					"author3"
+				],
+				"abstrct": "this is an abstract abstract",
+				"article": "this is article no. 13",
+				"approved": false
+			}
+
+	DELETE - http://localhost:8080/api/delete/{id}
+		-> requires ID of the article in the path
