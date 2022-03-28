@@ -16,12 +16,12 @@ If you want, you can connect to the database using the following command
 	-> psql -U postgres -W  -h localhost
 	-> enter the password you set on installation when prompted
 
-Download and install maven
-	-> https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.zip
-	-> verify installation - mvn --version
-
 Build and run this back-end api
-	-> mvn clean install
+	-> there is a maven wrapper "mvnw" in the root directory that can be used to build the project using  './mvnw clean install'. If this does not work download and install maven
+		Download and install maven
+			-> https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bin.zip
+			-> verify installation - mvn --version
+			-> mvn clean install
 	-> this will create an executable .jar file in the $ROOT/target folder that looks something like target\article-management-api-0.0.1-SNAPSHOT.jar
 	-> you can directly run this jar using -
 		-> java -jar target\article-management-api-0.0.1-SNAPSHOT.jar
@@ -38,20 +38,18 @@ Once the app is up, the endpoints can be accessed @
 		-> Body: raw, data type: json
 		-> Example -
 			{
-				"id": 1,
-				"title": "article no. 13",
+				"title": "article no. second",
 				"authors": [
-					"author1",
-					"author3"
+					"adi",
+					"sim"
 				],
 				"abstrct": "this is an abstract abstract",
-				"article": "this is article no. 13",
-				"approved": false
+				"article": "this is article no. 13"
 			}
 
 	PUT - http://localhost:8080/api/update
 		-> Body: raw, data type: json
-		-> Example -
+		-> You need to pass the entire article object in the body including the "id" and "approved" fields. Example -
 			{
 				"id": 1,
 				"title": "UPDATED - article no. 13",
